@@ -21,18 +21,33 @@ for ((attempt = 1; attempt <= max_attempts; attempt++)); do
 done
 
 login_page="$(curl --fail --silent --show-error "${base_url}${login_path}")"
+welcome_page="$(curl --fail --silent --show-error "${base_url}/")"
 
 grep --quiet 'coder.css' <<<"${login_page}"
 grep --quiet 'kc-form-login' <<<"${login_page}"
 grep --quiet 'Welcome back.' <<<"${login_page}"
+grep --quiet 'welcome.css' <<<"${welcome_page}"
+grep --quiet 'Code Station is ready.' <<<"${welcome_page}"
 
 css_path="$(grep -oE '/resources/[^\"]+/login/coder/css/coder.css' <<<"${login_page}" | head -n 1)"
+welcome_css_path="$(grep -oE 'resources/[^\"]+/welcome/coder/css/welcome.css' <<<"${welcome_page}" | head -n 1)"
 
 if [[ -z "${css_path}" ]]; then
   echo "Could not resolve the Coder theme stylesheet from the login page" >&2
   exit 1
 fi
 
-curl --fail --silent --show-error "${base_url}${css_path}" | grep --quiet -- '--coder-black: #090b0b'
+if [[ -z "${welcome_css_path}" ]]; then
+  echo "Could not resolve the Code Station stylesheet from the welcome page" >&2
+  exit 1
+fi
 
-echo "OK: Keycloak is ready, the coder realm is imported, and the custom theme is served."
+welcome_css_path="/${welcome_css_path#/}"
+
+login_css="$(curl --fail --silent --show-error "${base_url}${css_path}")"
+welcome_css="$(curl --fail --silent --show-error "${base_url}${welcome_css_path}")"
+
+grep --quiet -- '--coder-black: #090b0b' <<<"${login_css}"
+grep --quiet -- '--station-black: #090b0b' <<<"${welcome_css}"
+
+echo "OK: Keycloak is ready, the coder realm is imported, and the login and welcome themes are served."
