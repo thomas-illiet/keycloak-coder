@@ -1,0 +1,46 @@
+{
+  "realm": "coder",
+  "enabled": true,
+  "displayName": "Code Station",
+  "displayNameHtml": "Code Station",
+  "loginTheme": "coder",
+  "registrationAllowed": true,
+  "resetPasswordAllowed": true,
+  "rememberMe": true,
+  "internationalizationEnabled": false,
+  "bruteForceProtected": true,
+  "clients": [
+    {
+      "clientId": "coder-theme-preview",
+      "name": "Code Station theme preview",
+      "description": "Local client used to review the Code Station login theme",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "developer",
+      "email": "developer@coder.local",
+      "firstName": "Code Station",
+      "lastName": "Developer",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "coder-demo",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

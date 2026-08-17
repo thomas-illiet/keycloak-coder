@@ -1,0 +1,18 @@
+name: coder-keycloak-theme
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.0
+    command:
+      - start-dev
+      - --import-realm
+      - --health-enabled=true
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:9000:9000"
+    volumes:
+      - ./theme/coder:/opt/keycloak/themes/coder:ro
+      - ./realm/coder-realm.json:/opt/keycloak/data/import/coder-realm.json:ro

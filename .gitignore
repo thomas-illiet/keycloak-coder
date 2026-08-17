@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+.idea/
+.vscode/
+secrets/
+data/
+keycloak-data/
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
