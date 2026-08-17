@@ -121,7 +121,7 @@
       </main>
 
       <footer class="welcome-footer">
-        <span>SECURED BY ${productName}</span>
+        <span>SECURED BY INNOVATION</span>
         <span>CODE STATION / IDENTITY</span>
       </footer>
     </div>

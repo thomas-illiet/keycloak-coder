@@ -67,4 +67,4 @@ theme/coder/welcome/
 The theme uses the Code Station name as text and contains no Coder logo asset.
 It is an independent, unofficial project and is not affiliated with or endorsed by Coder Technologies, Inc.
 
-The implementation includes visible keyboard focus, associated native Keycloak labels, high-contrast controls, responsive layouts, and `prefers-reduced-motion` support. A slow cyan-and-ember ambient glow moves behind the static grid and is disabled when reduced motion is requested.
+The implementation includes visible keyboard focus, associated native Keycloak labels, high-contrast controls, responsive layouts, and `prefers-reduced-motion` support. A cyan-and-ember workspace signal pulses behind a drifting network grid and is disabled when reduced motion is requested.
