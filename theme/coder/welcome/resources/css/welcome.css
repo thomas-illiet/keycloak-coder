@@ -3,8 +3,8 @@
   --station-card: rgba(24, 23, 26, 0.88);
   --station-white: #fff;
   --station-muted: #a9a5ae;
-  --station-accent: #a4e8f2;
-  --station-accent-strong: #70d7e6;
+  --station-accent: #00a76d;
+  --station-accent-strong: #7fcbae;
   --station-ember: #ff8067;
   --station-border: rgba(255, 255, 255, 0.18);
   --station-border-soft: rgba(255, 255, 255, 0.12);
@@ -46,7 +46,7 @@ body::before {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.052) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.052) 1px, transparent 1px),
-    radial-gradient(circle, rgba(164, 232, 242, 0.24) 1px, transparent 1.6px);
+    radial-gradient(circle, rgba(0, 167, 109, 0.24) 1px, transparent 1.6px);
   background-size: 48px 48px, 48px 48px, 96px 96px;
   transform: translate3d(0, 0, 0);
   animation: welcome-grid-flow 18s linear infinite;
@@ -60,15 +60,15 @@ body::after {
     linear-gradient(
       112deg,
       transparent 24%,
-      rgba(164, 232, 242, 0.04) 39%,
-      rgba(164, 232, 242, 0.16) 48%,
+      rgba(0, 167, 109, 0.04) 39%,
+      rgba(0, 167, 109, 0.16) 48%,
       rgba(255, 255, 255, 0.06) 51%,
       rgba(255, 128, 103, 0.1) 55%,
       transparent 72%
     ),
-    radial-gradient(circle at 24% 30%, rgba(164, 232, 242, 0.42), transparent 25%),
+    radial-gradient(circle at 24% 30%, rgba(0, 167, 109, 0.42), transparent 25%),
     radial-gradient(circle at 72% 74%, rgba(255, 128, 103, 0.3), transparent 28%),
-    radial-gradient(circle at 58% 42%, rgba(164, 232, 242, 0.16), transparent 22%);
+    radial-gradient(circle at 58% 42%, rgba(0, 167, 109, 0.16), transparent 22%);
   filter: blur(36px) saturate(112%);
   animation: welcome-ambient-drift 14s ease-in-out infinite alternate;
   will-change: opacity;
@@ -143,7 +143,7 @@ body::after {
   height: 0.5rem;
   border-radius: 50%;
   background: var(--station-accent);
-  box-shadow: 0 0 0 4px rgba(164, 232, 242, 0.1), 0 0 1rem rgba(164, 232, 242, 0.55);
+  box-shadow: 0 0 0 4px rgba(0, 167, 109, 0.1), 0 0 1rem rgba(0, 167, 109, 0.55);
 }
 
 .welcome-layout {
@@ -248,7 +248,7 @@ body::after {
   border-radius: 1.25rem;
   justify-self: end;
   background: var(--station-card);
-  box-shadow: 0 0 0 1px rgba(164, 232, 242, 0.035), 0 2.25rem 6rem -2rem rgba(0, 0, 0, 0.62);
+  box-shadow: 0 0 0 1px rgba(0, 167, 109, 0.035), 0 2.25rem 6rem -2rem rgba(0, 0, 0, 0.62);
   backdrop-filter: blur(20px);
 }
 
@@ -256,15 +256,45 @@ body::after {
   display: grid;
   width: 3rem;
   height: 3rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(164, 232, 242, 0.35);
+  border: 1px solid rgba(0, 167, 109, 0.35);
   border-radius: 0.75rem;
   place-items: center;
   color: var(--station-accent);
-  background: rgba(164, 232, 242, 0.08);
+  background: rgba(0, 167, 109, 0.08);
   font-family: var(--station-mono);
   font-size: 1rem;
   font-weight: 700;
+}
+
+.welcome-card-header {
+  display: flex;
+  margin-bottom: 1.75rem;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.welcome-card-header::after {
+  height: 1px;
+  margin-left: 0.2rem;
+  flex: 1;
+  content: "";
+  background: linear-gradient(90deg, var(--station-border), transparent);
+}
+
+.welcome-card-heading-copy {
+  flex: 0 0 auto;
+}
+
+.welcome-card-header .welcome-card-kicker {
+  margin: 0 0 0.3rem;
+}
+
+.welcome-card-context {
+  margin: 0;
+  color: var(--station-muted);
+  font-family: var(--station-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
 }
 
 .welcome-icon-success {
@@ -346,6 +376,7 @@ body::after {
 
 .welcome-meta div {
   min-width: 0;
+  text-align: center;
 }
 
 .welcome-meta dt {
@@ -384,8 +415,8 @@ body::after {
 }
 
 .welcome-alert-success {
-  border-color: rgba(164, 232, 242, 0.45);
-  background: rgba(0, 92, 106, 0.22);
+  border-color: rgba(0, 167, 109, 0.45);
+  background: rgba(0, 128, 83, 0.22);
 }
 
 .welcome-alert-error {
@@ -424,7 +455,7 @@ body::after {
 .welcome-control:focus-within {
   border-color: var(--station-accent);
   background: var(--station-black);
-  box-shadow: 0 0 0 3px rgba(164, 232, 242, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 167, 109, 0.12);
 }
 
 .welcome-control input {

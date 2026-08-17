@@ -14,6 +14,15 @@
     </span>
   </div>
 </#macro>
+<#macro cardHeader icon kicker context success=false>
+  <div class="welcome-card-header">
+    <div class="welcome-icon<#if success> welcome-icon-success</#if>" aria-hidden="true">${icon}</div>
+    <div class="welcome-card-heading-copy">
+      <p class="welcome-card-kicker">${kicker}</p>
+      <p class="welcome-card-context">${context}</p>
+    </div>
+  </div>
+</#macro>
 <!doctype html>
 <html lang="en">
   <head>
@@ -49,15 +58,14 @@
             <div class="welcome-terminal-body">
               <p><span>$</span> codestation status</p>
               <p><strong>✓</strong> keycloak connected</p>
-              <p><strong>→</strong> realm coder ready</p>
+              <p><strong>→</strong> realm bnp-paribas ready</p>
             </div>
           </div>
         </section>
 
         <section class="welcome-card" aria-labelledby="welcome-card-title">
           <#if successMessage?has_content>
-            <div class="welcome-icon welcome-icon-success" aria-hidden="true">✓</div>
-            <p class="welcome-card-kicker">SETUP COMPLETE</p>
+            <@cardHeader icon="✓" kicker="SETUP COMPLETE" context="IDENTITY / READY" success=true />
             <h2 id="welcome-card-title">Administration is ready.</h2>
             <div class="welcome-alert welcome-alert-success" role="status">${successMessage}</div>
             <#if adminConsoleEnabled>
@@ -67,7 +75,7 @@
             </#if>
           <#elseif adminConsoleEnabled && bootstrap>
             <#if localUser>
-              <p class="welcome-card-kicker">FIRST RUN</p>
+              <@cardHeader icon="+_" kicker="FIRST RUN" context="ADMIN BOOTSTRAP" />
               <h2 id="welcome-card-title">Create your administrator.</h2>
               <p class="welcome-card-copy">Set up the first local account used to manage Code Station identity.</p>
 
@@ -88,17 +96,15 @@
                 </button>
               </form>
             <#else>
-              <div class="welcome-icon" aria-hidden="true">_</div>
-              <p class="welcome-card-kicker">SECURE SETUP</p>
+              <@cardHeader icon="_" kicker="SECURE SETUP" context="ADMIN BOOTSTRAP" />
               <h2 id="welcome-card-title">Local access required.</h2>
               <p class="welcome-card-copy">Create the first administrator from localhost or with the Keycloak bootstrap command.</p>
               <code class="welcome-command">bin/kc.sh bootstrap-admin user</code>
             </#if>
           <#else>
-            <div class="welcome-icon" aria-hidden="true">&gt;_</div>
-            <p class="welcome-card-kicker">WELCOME</p>
+            <@cardHeader icon=">_" kicker="WELCOME" context="IDENTITY GATEWAY" />
             <h2 id="welcome-card-title">Code Station is ready.</h2>
-            <p class="welcome-card-copy">Choose where you want to continue. Identity services are online and the coder realm is available.</p>
+            <p class="welcome-card-copy">Choose where you want to continue. Identity services are online and the bnp-paribas realm is available.</p>
 
             <div class="welcome-actions">
               <#if adminConsoleEnabled>
@@ -106,13 +112,13 @@
                   Open administration <span aria-hidden="true">→</span>
                 </a>
               </#if>
-              <a class="welcome-button welcome-button-secondary" href="${baseUrl}realms/coder/account">
+              <a class="welcome-button welcome-button-secondary" href="${baseUrl}realms/bnp-paribas/account">
                 Open account console <span aria-hidden="true">↗</span>
               </a>
             </div>
 
             <dl class="welcome-meta">
-              <div><dt>REALM</dt><dd>coder</dd></div>
+              <div><dt>REALM</dt><dd>bnp-paribas</dd></div>
               <div><dt>PROTOCOL</dt><dd>OIDC</dd></div>
               <div><dt>STATUS</dt><dd class="is-ready">ready</dd></div>
             </dl>

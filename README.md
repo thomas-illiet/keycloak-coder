@@ -1,6 +1,6 @@
 # Code Station theme for Keycloak
 
-A developer-first Keycloak login and welcome theme for Code Station, inspired by Coder's dark product experience. It uses black, white, cyan, and ember, mono technical labels, and responsive interfaces without a language selector.
+A developer-first Keycloak login and welcome theme for Code Station, inspired by Coder's dark product experience. It uses black, white, BNP Paribas green, and ember, mono technical labels, and responsive interfaces without a language selector.
 
 ## Preview
 
@@ -20,7 +20,7 @@ docker compose up -d
 ./scripts/smoke-test.sh
 ```
 
-Open the [Code Station account console](http://localhost:8080/realms/coder/account). It starts the complete browser login flow and returns to a real Keycloak screen after authentication. The demo credentials are:
+Open the [Code Station account console](http://localhost:8080/realms/bnp-paribas/account). It starts the complete browser login flow and returns to a real Keycloak screen after authentication. The demo credentials are:
 
 - Username: `developer`
 - Password: `coder-demo`
@@ -46,7 +46,7 @@ docker build -t keycloak-coder-theme .
 ```
 
 The login theme extends `keycloak.v2`, the Welcome theme extends `keycloak`, and both are validated against Keycloak `26.7.0`. Re-test them when upgrading Keycloak because upstream FreeMarker and PatternFly contracts can change.
-The Welcome page's account shortcut intentionally targets the bundled `coder` realm; update that link in `theme/coder/welcome/index.ftl` when deploying under another realm name.
+The Welcome page's account shortcut intentionally targets the bundled `bnp-paribas` realm; update that link in `theme/coder/welcome/index.ftl` when deploying under another realm name.
 
 ## Structure
 
@@ -67,4 +67,4 @@ theme/coder/welcome/
 The theme uses the Code Station name as text and contains no Coder logo asset.
 It is an independent, unofficial project and is not affiliated with or endorsed by Coder Technologies, Inc.
 
-The implementation includes visible keyboard focus, associated native Keycloak labels, high-contrast controls, responsive layouts, and `prefers-reduced-motion` support. A cyan-and-ember workspace signal pulses behind a drifting network grid and is disabled when reduced motion is requested.
+The implementation includes visible keyboard focus, associated native Keycloak labels, high-contrast controls, responsive layouts, and `prefers-reduced-motion` support. A BNP-green-and-ember workspace signal pulses behind a drifting network grid and is disabled when reduced motion is requested.

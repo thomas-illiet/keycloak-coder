@@ -16,4 +16,4 @@ services:
       - "127.0.0.1:9000:9000"
     volumes:
       - ./theme/coder:/opt/keycloak/themes/coder:ro
-      - ./realm/coder-realm.json:/opt/keycloak/data/import/coder-realm.json:ro
+      - ./realm/bnp-paribas-realm.json:/opt/keycloak/data/import/bnp-paribas-realm.json:ro
