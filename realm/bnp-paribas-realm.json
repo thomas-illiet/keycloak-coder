@@ -9,6 +9,15 @@
   "rememberMe": true,
   "internationalizationEnabled": false,
   "bruteForceProtected": true,
+  "identityProviders": [
+    {
+      "alias": "corporate-oidc",
+      "displayName": "OpenID Connect",
+      "providerId": "oidc",
+      "enabled": true,
+      "config": {}
+    }
+  ],
   "clients": [
     {
       "clientId": "coder-theme-preview",

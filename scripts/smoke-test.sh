@@ -21,11 +21,25 @@ for ((attempt = 1; attempt <= max_attempts; attempt++)); do
 done
 
 login_page="$(curl --fail --silent --show-error "${base_url}${login_path}")"
+master_login_page="$(
+  curl --fail --silent --show-error --get "${base_url}/realms/master/protocol/openid-connect/auth" \
+    --data-urlencode 'client_id=account-console' \
+    --data-urlencode "redirect_uri=${base_url}/realms/master/account/" \
+    --data-urlencode 'response_type=code' \
+    --data-urlencode 'scope=openid' \
+    --data-urlencode 'code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM' \
+    --data-urlencode 'code_challenge_method=S256'
+)"
 welcome_page="$(curl --fail --silent --show-error "${base_url}/")"
 
 grep --quiet 'coder.css' <<<"${login_page}"
 grep --quiet 'kc-form-login' <<<"${login_page}"
 grep --quiet 'Welcome back.' <<<"${login_page}"
+grep --quiet 'id="kc-social-providers"' <<<"${login_page}"
+grep --quiet 'id="social-corporate-oidc"' <<<"${login_page}"
+grep --quiet 'aria-label="OpenID Connect"' <<<"${login_page}"
+grep --quiet '/broker/corporate-oidc/login' <<<"${login_page}"
+grep --quiet 'class="kc-logo-text"' <<<"${master_login_page}"
 grep --quiet 'welcome.css' <<<"${welcome_page}"
 grep --quiet 'Code Station is ready.' <<<"${welcome_page}"
 grep --quiet 'realm bnp-paribas ready' <<<"${welcome_page}"
@@ -47,9 +61,12 @@ welcome_css_path="/${welcome_css_path#/}"
 
 login_css="$(curl --fail --silent --show-error "${base_url}${css_path}")"
 welcome_css="$(curl --fail --silent --show-error "${base_url}${welcome_css_path}")"
+master_logo_rule="$(grep -A 1 -- '#kc-header-wrapper :is(.kc-logo-text, img, picture, svg)' <<<"${login_css}")"
 
 grep --quiet -- '--coder-black: #090b0b' <<<"${login_css}"
 grep --quiet -- '--code-station-accent: #00a76d' <<<"${login_css}"
+grep --quiet -- 'display: none !important' <<<"${master_logo_rule}"
+grep --fixed-strings --quiet -- '#kc-social-providers a[id^="social-"]' <<<"${login_css}"
 grep --quiet -- '--station-black: #090b0b' <<<"${welcome_css}"
 grep --quiet -- '--station-accent: #00a76d' <<<"${welcome_css}"
 

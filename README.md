@@ -29,6 +29,8 @@ The Keycloak admin console is available at [http://localhost:8080/admin](http://
 
 Registration, password reset, and remembered sessions are enabled in the demo realm. The preview uses English without displaying a language selector.
 
+The demo realm also exposes an unconfigured **OpenID Connect** entry so the alternative sign-in layout can be reviewed. It is a visual fixture only; configure real discovery/client settings before using that provider.
+
 The [Code Station welcome page](http://localhost:8080/) stays available after bootstrap and provides direct access to the administration and account consoles.
 
 Stop the preview with:
@@ -64,7 +66,7 @@ theme/coder/welcome/
 
 ## Brand and accessibility notes
 
-The theme uses the Code Station name as text and contains no Coder logo asset.
+The theme uses the Code Station name as text and contains no Coder logo asset. Image-based realm branding is suppressed, including the built-in Keycloak logo rendered by the `master` realm.
 It is an independent, unofficial project and is not affiliated with or endorsed by Coder Technologies, Inc.
 
 The implementation includes visible keyboard focus, associated native Keycloak labels, high-contrast controls, responsive layouts, and `prefers-reduced-motion` support. A BNP-green-and-ember workspace signal pulses behind a drifting network grid and is disabled when reduced motion is requested.
