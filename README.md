@@ -66,7 +66,7 @@ theme/coder/welcome/
 
 ## Brand and accessibility notes
 
-The theme uses the Code Station name as text and contains no Coder logo asset. Image-based realm branding is suppressed, including the built-in Keycloak logo rendered by the `master` realm.
+The login header always uses the Code Station name as text instead of the realm display name and contains no Coder logo asset. Image-based realm branding is suppressed, including the built-in Keycloak logo rendered by the `master` realm.
 It is an independent, unofficial project and is not affiliated with or endorsed by Coder Technologies, Inc.
 
 The implementation includes visible keyboard focus, associated native Keycloak labels, high-contrast controls, responsive layouts, and `prefers-reduced-motion` support. A BNP-green-and-ember workspace signal pulses behind a drifting network grid and is disabled when reduced motion is requested.

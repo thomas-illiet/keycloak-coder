@@ -39,7 +39,16 @@ grep --quiet 'id="kc-social-providers"' <<<"${login_page}"
 grep --quiet 'id="social-corporate-oidc"' <<<"${login_page}"
 grep --quiet 'aria-label="OpenID Connect"' <<<"${login_page}"
 grep --quiet '/broker/corporate-oidc/login' <<<"${login_page}"
-grep --quiet 'class="kc-logo-text"' <<<"${master_login_page}"
+grep --quiet '>code station</div>' <<<"${login_page}"
+if grep --quiet 'coder.css' <<<"${master_login_page}"; then
+  grep --quiet '>code station</div>' <<<"${master_login_page}"
+  if grep --quiet 'class="kc-logo-text"' <<<"${master_login_page}"; then
+    echo "The themed master login page still renders the Keycloak logo" >&2
+    exit 1
+  fi
+else
+  grep --quiet 'class="kc-logo-text"' <<<"${master_login_page}"
+fi
 grep --quiet 'welcome.css' <<<"${welcome_page}"
 grep --quiet 'Code Station is ready.' <<<"${welcome_page}"
 grep --quiet 'realm bnp-paribas ready' <<<"${welcome_page}"
