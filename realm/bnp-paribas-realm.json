@@ -4,6 +4,7 @@
   "displayName": "Code Station",
   "displayNameHtml": "Code Station",
   "loginTheme": "coder",
+  "accountTheme": "coder",
   "registrationAllowed": true,
   "resetPasswordAllowed": true,
   "rememberMe": true,
@@ -43,6 +44,9 @@
       "lastName": "Developer",
       "enabled": true,
       "emailVerified": true,
+      "realmRoles": [
+        "default-roles-bnp-paribas"
+      ],
       "credentials": [
         {
           "type": "password",
